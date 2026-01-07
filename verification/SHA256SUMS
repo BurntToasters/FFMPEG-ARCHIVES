@@ -1,0 +1,13 @@
+# SHA256 Checksums for FFmpeg Archives
+
+# FFmpeg 6.1.1
+# Add checksum after downloading:
+# sha256sum sources/ffmpeg-6.1.1.tar.xz >> verification/SHA256SUMS
+
+# Format: <checksum>  <filename>
+
+# Example:
+# abc123...  sources/ffmpeg-6.1.1.tar.xz
+
+# To verify:
+# cd sources/ && sha256sum -c ../verification/SHA256SUMS

@@ -1,0 +1,38 @@
+# Ignore build artifacts that shouldn't be committed
+# Sources should be in sources/ directory and tracked with Git LFS
+
+# Temporary files
+*.tmp
+*.log
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+# Build artifacts (unless specifically tracked)
+builds/**/*.exe
+builds/**/*.dll
+builds/**/*.so
+builds/**/*.dylib
+builds/**/*.a
+builds/**/*.lib
+
+# Extracted source directories (keep tarballs only)
+sources/ffmpeg-*/
+sources/FFmpeg-*/
+
+# Editor files
+.vscode/
+.idea/
+*.code-workspace
+
+# OS files
+.DS_Store
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Desktop.ini
+
+# Git LFS pulls
+*.tar.xz.incomplete
+*.tar.gz.incomplete

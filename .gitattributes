@@ -1,0 +1,15 @@
+# Git LFS configuration for FFMPEG-ARCHIVES
+# Large FFmpeg source tarballs should be tracked with LFS
+
+# FFmpeg source archives
+sources/*.tar.xz filter=lfs diff=lfs merge=lfs -text
+sources/*.tar.gz filter=lfs diff=lfs merge=lfs -text
+sources/*.tar.bz2 filter=lfs diff=lfs merge=lfs -text
+
+# Compressed archives
+*.tar.xz filter=lfs diff=lfs merge=lfs -text
+*.tar.gz filter=lfs diff=lfs merge=lfs -text
+
+# Build artifacts (if needed)
+builds/**/*.zip filter=lfs diff=lfs merge=lfs -text
+builds/**/*.tar.gz filter=lfs diff=lfs merge=lfs -text

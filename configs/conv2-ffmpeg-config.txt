@@ -1,0 +1,102 @@
+Application: CONV2 v1.0.2+
+FFmpeg Version: User-provided (any recent version recommended: 6.0+)
+Platform: All (Windows, macOS, Linux)
+Build Type: System Installation
+Archive Date: 2026-01-07
+
+==========================================
+CONV2 FFmpeg Configuration
+==========================================
+
+Build Approach:
+CONV2 uses FFmpeg as an EXTERNAL SYSTEM DEPENDENCY.
+FFmpeg is NOT bundled with the application.
+Users install FFmpeg separately from system packages or official builds.
+
+Minimum Requirements:
+- FFmpeg 6.0 or newer (recommended 6.1.1)
+- ffmpeg binary (for encoding)
+- ffprobe binary (for media information)
+
+Recommended Build Features:
+- GPL components enabled (libx264, libx265)
+- Hardware encoder support:
+  * Windows: AMF, NVENC, QSV
+  * macOS: VideoToolbox
+  * Linux: VAAPI, NVENC, QSV, AMF
+- Audio codecs: libopus, aac, libmp3lame, flac
+- Video codecs: libvpx, libsvtav1
+- Container formats: mp4, mkv, webm
+
+User Installation Methods:
+==========================================
+
+Windows:
+- Official builds: https://www.gyan.dev/ffmpeg/builds/
+- Chocolatey: choco install ffmpeg
+- Scoop: scoop install ffmpeg
+
+macOS:
+- Homebrew: brew install ffmpeg
+- MacPorts: port install ffmpeg
+
+Linux:
+- Debian/Ubuntu: apt install ffmpeg
+- Fedora: dnf install ffmpeg
+- Arch: pacman -S ffmpeg
+
+CONV2 Runtime Detection:
+==========================================
+
+CONV2 detects FFmpeg at runtime by:
+1. Searching system PATH for 'ffmpeg' and 'ffprobe'
+2. Running 'ffmpeg -version' to verify installation
+3. Checking available encoders with 'ffmpeg -encoders'
+4. Testing GPU encoder support if hardware selected
+
+No specific build configuration is enforced.
+CONV2 adapts to whatever FFmpeg version the user has installed.
+
+Hardware Encoder Support:
+==========================================
+
+CONV2 supports but does not require:
+- NVIDIA NVENC (h264_nvenc, hevc_nvenc, av1_nvenc)
+- AMD AMF (h264_amf, hevc_amf, av1_amf)
+- Intel QSV (h264_qsv, hevc_qsv, av1_qsv)
+- Apple VideoToolbox (h264_videotoolbox, hevc_videotoolbox)
+
+Fallback to software encoding (libx264, libx265, libsvtav1) if hardware unavailable.
+
+GPL Compliance Notes:
+==========================================
+
+Since CONV2 does not bundle FFmpeg:
+- Users obtain FFmpeg from official sources
+- FFmpeg retains its original licensing (LGPL/GPL)
+- CONV2 remains under MPL 2.0
+- Source code for FFmpeg available at https://ffmpeg.org
+- This archive provides compliance documentation
+
+Reference Build Configuration:
+==========================================
+
+For users who want to build FFmpeg themselves, a typical configuration:
+
+./configure \
+    --enable-gpl \
+    --enable-version3 \
+    --enable-libx264 \
+    --enable-libx265 \
+    --enable-libvpx \
+    --enable-libopus \
+    --enable-libsvtav1 \
+    --enable-libmp3lame
+
+Platform-specific options:
+- Windows: --toolchain=msvc or MSYS2
+- macOS: --enable-videotoolbox
+- Linux: --enable-vaapi
+
+==========================================
+Last Updated: 2026-01-07
